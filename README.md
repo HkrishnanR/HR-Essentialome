@@ -1,2 +1,5 @@
 # HR-Essentialome
-Codes for HR Essentialome manuscript
+Scripts used in the HR-Essentialome manuscript
+
+
+
