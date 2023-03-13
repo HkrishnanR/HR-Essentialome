@@ -1,6 +1,6 @@
 """
 Created April 2021
-@author: Harikrishnan Ramadasan
+@author: Harikrishnan Ramadasan <harikrishnan@students.iisertirupati.ac.in>
 - HR Essentialome analysis
 """
 
@@ -22,12 +22,12 @@ def get_degree_preserving_randomization(edges):
     :param edges: list with each tuple stored as an edge
     :return: a list of new edges
     """
-    edges = set([tuple(e) for e in edges])
+    edges = set([tuple(e) for e in edges]) # create a tuple of all edges
 
     degrees = []
     [degrees.extend(e) for e in edges]  # Stores degrees in a list
 
-    degree_counter = Counter(degrees)
+    degree_counter = Counter(degrees) #counts th
 
     new_edges = set()
 

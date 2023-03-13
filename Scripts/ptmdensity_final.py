@@ -1,10 +1,11 @@
 """
 Created April 2021
-@author: Harikrishnan Ramadasan
+@author: Harikrishnan Ramadasan <harikrishnan@students.iisertirupati.ac.in>
 - HR Essentialome analysis
 """
 
 import pandas as pd
+
 
 def find_range(x):
     if x["Start"] <= x["Site"] <= x["Stop"]:
@@ -32,7 +33,7 @@ def get_count(x) -> dict:
 
 def split_count(x):
     """
-    :param x: rows of dataframe
+    :param x: rows of dataframe -- takes in the count dict of ptms
     :return: Total PTMs
     """
     new = []
@@ -43,12 +44,11 @@ def split_count(x):
 
 
 def filter_matches(zeros: bool = False):
-    df = pd.read_csv("dbPTM2021_AllPTMs.txt", sep="\t")
+    df = pd.read_csv("../data/./dbPTM2021_AllPTMs.txt", sep="\t") # Reads the PTM data
     print(df)
-    df1 = pd.read_csv("AllHRPs.txt", sep="\t")
+    df1 = pd.read_csv("../data/./AllHRPs.txt", sep="\t") # File with Proteins and HR information
     print(df1)
     df2 = pd.merge(df, df1, left_on="UniprotID", right_on="UniprotID")
-
     df2["Real"] = df2.apply(find_range, axis=1)
     df2 = df2[~df2["Real"].isna()]  # removes all rows not falling in range
 
@@ -60,7 +60,7 @@ def filter_matches(zeros: bool = False):
     if zeros:
         df2 = df2[['UniprotID', 'HR_Id', 'Length']]
         df2.to_csv("HR_PTM_Aggregate_2021_zeros.txt",
-                   sep="\t")  # gives all rows that doesn't fall in range,ie positions where PTM dont occur
+                   sep="\t")  # gives all rows that doesn't fall in range,ie positions where PTM doesn't occur
 
         return df2
 
@@ -84,3 +84,6 @@ def filter_matches(zeros: bool = False):
     df2.to_csv("HR_PTM_Aggregate_2021_mod.txt", sep="\t")
 
     return df2
+
+
+

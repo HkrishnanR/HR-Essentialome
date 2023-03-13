@@ -1,18 +1,16 @@
 """
 Created April 2021
-@author: Harikrishnan Ramadasan
+@author: Harikrishnan Ramadasan <harikrishnan@students.iisertirupati.ac.in>
 - HR Essentialome analysis
 """
-
 
 library(Biostrings)
 library(splitstackshape)
 library(stringr)
 library(dplyr)
-
 data("BLOSUM62")   
 
-filenames <- Sys.glob("../data/*.fasta") #get a list of all files
+filenames <- Sys.glob("../data/*.fasta") #get a list of all sequence files
 
 dfs<-list()
 j<-0
